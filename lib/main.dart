@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'lib/presentation/pages/home/splash_screen.dart';
+
 void main() {
   runApp(const MaterialApp(
     debugShowCheckedModeBanner: false,
@@ -13,6 +15,6 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SplashScree();
+    return SplashScreen();
   }
 }

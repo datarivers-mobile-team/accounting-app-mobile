@@ -1,6 +1,9 @@
-# accounting_app_mobile
+# accounting app
 
-A new Flutter project.
+a personal  accounting app 
+
+## Used Techs
+- Flutter
 
 ## Getting Started
 
