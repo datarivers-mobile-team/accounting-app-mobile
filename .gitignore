@@ -32,6 +32,8 @@ migrate_working_dir/
 .pub/
 /build/
 /mason/
+
+# Unused compiles
 /macos/
 /windows/
 /linux/
@@ -50,9 +52,3 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
-
-
-# Unused compiles
-windows
-linux
-macos
