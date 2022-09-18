@@ -1,25 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:accounting_app_mobile/consts.dart';
 
-class TextInput extends StatefulWidget {
-  final String label;
+class TextInput extends StatelessWidget {
   final String hint;
-  final Function setValue;
+  final TextEditingController controller;
+  final IconData icon;
   const TextInput({
     Key? key,
-    required this.label,
     required this.hint,
-    required this.setValue,
+    required this.controller,
+    required this.icon,
   }) : super(key: key);
-  @override
-  State<TextInput> createState() => _TextInputState();
-}
 
-class _TextInputState extends State<TextInput> {
   @override
   Widget build(BuildContext context) {
     return TextField(
-      onChanged: (value) => widget.setValue(value),
+      controller: controller,
       cursorColor: CustomColors.kLightYellow,
       decoration: InputDecoration(
         enabledBorder: const OutlineInputBorder(
@@ -33,24 +29,26 @@ class _TextInputState extends State<TextInput> {
             color: CustomColors.kLightYellow,
           ),
         ),
-        labelText: widget.label,
-        hintText: widget.hint,
-        labelStyle:
-            const TextStyle(color: CustomColors.kDarkBlue, fontSize: 15),
+        hintText: hint,
+        // hintStyle: const TextStyle(color: CustomColors.kDarkBlue, fontSize: 15),
         filled: true,
         fillColor: CustomColors.kLightGrey,
         focusColor: Colors.white,
-        prefixIcon: const Icon(Icons.email, color: CustomColors.kDarkBlue),
+        prefixIcon: Icon(icon, color: CustomColors.kDarkBlue),
       ),
     );
   }
 }
 
 class SecureTextInput extends StatefulWidget {
-  final String label;
-  final Function setValue;
-
-  const SecureTextInput({Key? key, required this.label, required this.setValue})
+  final String hint;
+  final TextEditingController controller;
+  final IconData icon;
+  const SecureTextInput(
+      {Key? key,
+      required this.hint,
+      required this.controller,
+      required this.icon})
       : super(key: key);
 
   @override
@@ -63,7 +61,7 @@ class _SecureTextInputState extends State<SecureTextInput> {
   @override
   Widget build(BuildContext context) {
     return TextField(
-      onChanged: (value) => widget.setValue(value),
+      controller: widget.controller,
       cursorColor: CustomColors.kLightYellow,
       obscureText: isHidden,
       decoration: InputDecoration(
@@ -78,13 +76,14 @@ class _SecureTextInputState extends State<SecureTextInput> {
             color: CustomColors.kLightYellow,
           ),
         ),
-        labelText: widget.label,
-        labelStyle:
-            const TextStyle(color: CustomColors.kDarkBlue, fontSize: 15),
+        hintText: widget.hint,
+        // hintStyle: const TextStyle(color: CustomColors.kDarkBlue, fontSize: 15),
         filled: true,
         fillColor: CustomColors.kLightGrey,
-        prefixIcon: const Icon(Icons.email, color: CustomColors.kDarkBlue),
+        prefixIcon: Icon(widget.icon, color: CustomColors.kDarkBlue),
         suffixIcon: IconButton(
+          color: Colors.black38,
+          splashColor: Colors.transparent,
           icon: isHidden
               ? const Icon(Icons.visibility)
               : const Icon(Icons.visibility_off),
