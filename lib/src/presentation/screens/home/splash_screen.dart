@@ -1,4 +1,5 @@
 import 'package:accounting_app_mobile/consts.dart';
+import 'package:accounting_app_mobile/src/presentation/screens/auth/register_screen.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatelessWidget {
@@ -6,13 +7,20 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Future.delayed(const Duration(seconds: 2), () {
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(
+          builder: (context) => const RegisterScreen(),
+        ),
+      );
+    });
     return Scaffold(
       body: Stack(
         children: [
           Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               gradient: LinearGradient(
-                  colors: [ConstValue.kPurple, ConstValue.kYellowWhite],
+                  colors: [CustomColors.kPurple, CustomColors.kWhiteYellow],
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter),
             ),
@@ -24,12 +32,15 @@ class SplashScreen extends StatelessWidget {
                     "assets/images/PNG/splash_logo.png",
                     width: 150,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
-                  Text(
+                  const Text(
                     "Accounting",
-                    style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                        color: CustomColors.kDarkBlue),
                   )
                 ],
               ),

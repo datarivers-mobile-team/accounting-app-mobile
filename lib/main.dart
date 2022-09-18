@@ -1,6 +1,6 @@
+// import 'package:accounting_app_mobile/lib/presentation/pages/auth/register.dart';
+import 'src/presentation/screens/home/splash_screen.dart';
 import 'package:flutter/material.dart';
-
-import 'lib/presentation/pages/home/splash_screen.dart';
 
 void main() {
   runApp(const MaterialApp(
@@ -15,6 +15,6 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SplashScreen();
+    return const SplashScreen();
   }
 }
