@@ -7,8 +7,9 @@ class AuthLayout extends StatelessWidget {
     required this.titleList,
     required this.subTitle,
     required this.children,
+    this.icon,
   }) : super(key: key);
-
+  final Widget? icon;
   final List<TextSpan> titleList;
   final String subTitle;
   final List<Widget> children;
@@ -16,12 +17,14 @@ class AuthLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 25),
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          physics: const NeverScrollableScrollPhysics(),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
-            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+              icon != null ? icon! : const SizedBox(),
+              icon != null ? const SizedBox(height: 20) : const SizedBox(),
               Text.rich(
                 TextSpan(
                   style: const TextStyle(
@@ -39,11 +42,11 @@ class AuthLayout extends StatelessWidget {
                   height: 1.6,
                   fontSize: 15,
                   fontWeight: FontWeight.w400,
-                  color: CustomColors.kLightDarkBlue,
+                  color: CustomColors.kDarkBlue,
                 ),
                 textAlign: TextAlign.center,
               ),
-              const SizedBox(height: 77),
+              // const SizedBox(height: 77),
               ...children,
             ],
           ),
