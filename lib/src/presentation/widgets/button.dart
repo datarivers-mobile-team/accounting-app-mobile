@@ -7,7 +7,7 @@ class Button extends StatelessWidget {
   final String text;
   const Button(
       {Key? key,
-      this.bgColor = CustomColors.kGreen,
+      this.bgColor = CustomColors.kPrimary,
       required this.onPress,
       required this.text})
       : super(key: key);

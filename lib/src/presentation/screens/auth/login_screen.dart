@@ -1,6 +1,6 @@
 import 'package:accounting_app_mobile/consts.dart';
 import 'package:accounting_app_mobile/src/presentation/layouts/auth_layout.dart';
-import 'package:accounting_app_mobile/src/presentation/screens/auth/register_screen.dart';
+import 'package:accounting_app_mobile/src/presentation/screens/auth/otp_screen.dart';
 import 'package:accounting_app_mobile/src/presentation/widgets/button.dart';
 import 'package:accounting_app_mobile/src/presentation/widgets/input.dart';
 import 'package:flutter/material.dart';
@@ -13,13 +13,11 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  late final TextEditingController _email;
-  late final TextEditingController _password;
-
+  late final TextEditingController _phoneNumber;
+  String currentCode = '+1';
   @override
   void initState() {
-    _email = TextEditingController();
-    _password = TextEditingController();
+    _phoneNumber = TextEditingController();
 
     super.initState();
   }
@@ -27,72 +25,69 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return AuthLayout(
+      icon: Stack(
+        children: [
+          Center(child: Image.asset('assets/images/PNG/circle.png')),
+          Center(
+            heightFactor: 1.6,
+            child: Transform.scale(
+              scaleX: -1,
+              child: const Icon(
+                Icons.phone,
+                size: 80,
+                color: Colors.white,
+              ),
+            ),
+          ),
+        ],
+      ),
       titleList: const [
-        TextSpan(text: 'W', style: TextStyle(color: CustomColors.kGreen)),
+        TextSpan(text: 'M', style: TextStyle(color: CustomColors.kBlue)),
         TextSpan(
-          text: 'elcome Back',
+          text: 'obile',
           style: TextStyle(color: CustomColors.kDarkBlue),
         ),
         TextSpan(
-          text: '!',
-          style: TextStyle(color: CustomColors.kOrange),
+          text: ' N',
+          style: TextStyle(color: CustomColors.kGreen),
+        ),
+        TextSpan(
+          text: 'umber',
+          style: TextStyle(color: CustomColors.kDarkBlue),
         ),
       ],
-      subTitle: 'Sign in to continue ',
+      subTitle:
+          'Please enter your valid phone number. We will send you 4-digit code to verify account.',
       children: [
         const SizedBox(
           height: 95,
         ),
-        TextInput(
-          hint: 'Email Address',
-          controller: _email,
-          icon: Icons.email,
-        ),
-        const SizedBox(
-          height: 10,
-        ),
-        SecureTextInput(
-          hint: 'Password',
-          controller: _password,
-          icon: Icons.lock,
-        ),
-        const SizedBox(
-          height: 10,
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            InkWell(
-              onTap: () {},
-              child: const Text(
-                'Forgot Password?',
-                style: TextStyle(
-                  color: CustomColors.kDarkBlue,
-                ),
-              ),
-            ),
-          ],
+        PhoneNumInput(
+          controller: _phoneNumber,
+          countryCodes: const ['+1', '+2', '+3', '+4', '+98'],
+          currentCode: currentCode,
+          onCodeChanged: (String code) => setState(() {
+            currentCode = code;
+          }),
         ),
         const SizedBox(
           height: 36,
         ),
         Button(
-          bgColor: CustomColors.kOrange,
-          onPress: () {},
-          text: 'Sign in My Account',
-        ),
-        const SizedBox(
-          height: 18,
-        ),
-        SimpleTextButton(
+          bgColor: CustomColors.kPrimary,
           onPress: () {
-            Navigator.of(context).pushReplacement(
+            String number = '$currentCode ${_phoneNumber.text}';
+            Navigator.pushReplacement(
+              context,
               MaterialPageRoute(
-                builder: (context) => const RegisterScreen(),
+                builder: (context) => OtpScreen(number: number),
               ),
             );
           },
-          text: 'Don’t have an account? - Sign Up',
+          text: 'Send Code',
+        ),
+        const SizedBox(
+          height: 18,
         ),
       ],
     );
