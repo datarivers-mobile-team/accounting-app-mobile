@@ -1,5 +1,4 @@
-// import 'package:accounting_app_mobile/lib/presentation/pages/auth/register.dart';
-import 'src/presentation/screens/home/splash_screen.dart';
+import 'package:accounting_app_mobile/src/presentation/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {

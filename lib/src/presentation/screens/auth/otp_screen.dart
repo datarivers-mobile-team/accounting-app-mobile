@@ -1,8 +1,10 @@
 import 'package:accounting_app_mobile/consts.dart';
 import 'package:accounting_app_mobile/src/presentation/layouts/auth_layout.dart';
 import 'package:accounting_app_mobile/src/presentation/screens/auth/accept_screen.dart';
+import 'package:accounting_app_mobile/src/presentation/screens/auth/create_account_screen.dart';
 import 'package:accounting_app_mobile/src/presentation/widgets/button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class OtpScreen extends StatefulWidget {
   const OtpScreen({Key? key, required this.number}) : super(key: key);
@@ -45,6 +47,12 @@ class _OtpScreenState extends State<OtpScreen> {
               width: 50,
               child: TextField(
                 autofocus: true,
+                keyboardType: TextInputType.number,
+                textAlign: TextAlign.center,
+                maxLength: 1,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                ),
               ),
             ),
             SizedBox(
@@ -67,7 +75,8 @@ class _OtpScreenState extends State<OtpScreen> {
         Button(
           onPress: () {
             Navigator.of(context).pushReplacement(
-              MaterialPageRoute(builder: (context) => const AcceptScreen()),
+              MaterialPageRoute(
+                  builder: (context) => const CreateAccountScreen()),
             );
           },
           text: 'Proceed',
