@@ -1,4 +1,5 @@
 import 'package:accounting_app_mobile/consts.dart';
+import 'package:accounting_app_mobile/src/presentation/screens/home/dashboard_screen.dart';
 import 'package:accounting_app_mobile/src/presentation/widgets/button.dart';
 import 'package:flutter/material.dart';
 
@@ -69,7 +70,13 @@ class AcceptScreen extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(20.0),
             child: Button(
-              onPress: () {},
+              onPress: () {
+                Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(
+                    builder: (context) => const DashBoardScreen(),
+                  ),
+                );
+              },
               text: 'Continue',
             ),
           ),
