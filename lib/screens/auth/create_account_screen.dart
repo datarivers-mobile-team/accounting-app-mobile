@@ -55,7 +55,7 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
           onMainColorChange: (ColorSwatch? color) {
             setState(() => _color = color as ColorSwatch);
           },
-          colors: [Colors.amber, Colors.brown],
+          colors: const [Colors.amber, Colors.brown],
           selectedColor: _color,
         ),
         const SizedBox(
