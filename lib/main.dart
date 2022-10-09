@@ -1,4 +1,4 @@
-import 'package:accounting_app_mobile/src/presentation/screens/splash_screen.dart';
+import 'screens/screens.dart';
 import 'package:flutter/material.dart';
 
 void main() {

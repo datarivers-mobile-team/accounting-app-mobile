@@ -1,4 +1,4 @@
-name: accounting_app_mobile
+name: walletline
 description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
@@ -35,6 +35,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.5
   dio: ^4.0.6
+  otp_text_field: ^1.1.3
   # flutter_otp_text_field: ^1.1.1
   
 
