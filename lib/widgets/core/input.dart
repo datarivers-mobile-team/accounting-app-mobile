@@ -6,8 +6,10 @@ class TextInput extends StatelessWidget {
   final String hint;
   final TextEditingController controller;
   final IconData icon;
-  const TextInput({
+  TextInputType? keyboardType;
+  TextInput({
     Key? key,
+    this.keyboardType,
     required this.hint,
     required this.controller,
     required this.icon,
@@ -18,6 +20,7 @@ class TextInput extends StatelessWidget {
     return TextField(
       controller: controller,
       cursorColor: CustomColors.kPrimary,
+      keyboardType: keyboardType ?? TextInputType.text,
       decoration: InputDecoration(
         enabledBorder: const OutlineInputBorder(
           borderSide: BorderSide(width: 2, color: Colors.transparent),
@@ -31,7 +34,6 @@ class TextInput extends StatelessWidget {
           ),
         ),
         hintText: hint,
-        // hintStyle: const TextStyle(color: CustomColors.kDarkBlue, fontSize: 15),
         filled: true,
         fillColor: CustomColors.kLightGray,
         focusColor: Colors.white,

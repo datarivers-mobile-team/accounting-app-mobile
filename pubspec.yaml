@@ -36,6 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.5
   dio: ^4.0.6
   otp_text_field: ^1.1.3
+  flutter_material_color_picker: ^1.1.0+2
   # flutter_otp_text_field: ^1.1.1
   
 
@@ -45,7 +46,6 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   
-  mason: ^0.1.0-dev.32
   build_runner: ^2.2.1
   json_serializable: ^6.3.2
 
